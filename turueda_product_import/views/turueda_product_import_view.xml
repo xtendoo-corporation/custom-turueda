@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <menuitem
+        id="turueda_import_product_menuitem"
+        name="Turueda Import Product"
+        action="turueda_import_product_action"
+        parent="sale.menu_sale_config"
+        sequence="70"
+    />
+</odoo>
+
+
