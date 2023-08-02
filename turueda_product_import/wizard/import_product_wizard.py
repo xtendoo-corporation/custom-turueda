@@ -275,7 +275,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_carga(self, product_template, product_attribute_carga, product_attribute_carga_value):
+    def _search_or_create_product_attribute_line_carga(self, product_template, product_attribute_carga,
+                                                 product_attribute_carga_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -285,13 +286,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_carga.id),
+            ]
+        )
+        if result and product_attribute_carga_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_carga_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_carga.id,
                 "value_ids": [(6, 0, [product_attribute_carga_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_velocidad(self, product_attribute_velocidad, product_attribute_value_velocidad):
         product_attribute_velocidad_id = product_attribute_velocidad[0].id
@@ -310,7 +325,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_velocidad(self, product_template, product_attribute_velocidad, product_attribute_velocidad_value):
+    def _search_or_create_product_attribute_line_velocidad(self, product_template, product_attribute_velocidad,
+                                                 product_attribute_velocidad_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -320,14 +336,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_velocidad.id),
+            ]
+        )
+        if result and product_attribute_velocidad_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_velocidad_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_velocidad.id,
                 "value_ids": [(6, 0, [product_attribute_velocidad_value.id])],
             }
         )
-
+        return result
     def _search_or_create_product_attribute_value_marca(self, product_attribute_marca, product_attribute_value_marca):
         product_attribute_marca_id = product_attribute_marca[0].id
         result = self.env["product.attribute.value"].search(
@@ -345,7 +374,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_marca(self, product_template, product_attribute_marca, product_attribute_marca_value):
+    def _search_or_create_product_attribute_line_marca(self, product_template, product_attribute_marca,
+                                                 product_attribute_marca_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -355,13 +385,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_marca.id),
+            ]
+        )
+        if result and product_attribute_marca_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_marca_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_marca.id,
                 "value_ids": [(6, 0, [product_attribute_marca_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_peso(self, product_attribute_peso, product_attribute_value_peso):
         product_attribute_peso_id = product_attribute_peso[0].id
@@ -380,7 +424,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_peso(self, product_template, product_attribute_peso, product_attribute_peso_value):
+    def _search_or_create_product_attribute_line_peso(self, product_template, product_attribute_peso,
+                                                 product_attribute_peso_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -390,13 +435,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_peso.id),
+            ]
+        )
+        if result and product_attribute_peso_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_peso_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_peso.id,
                 "value_ids": [(6, 0, [product_attribute_peso_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_diametro(self, product_attribute_diametro, product_attribute_value_diametro):
         product_attribute_diametro_id = product_attribute_diametro[0].id
@@ -415,7 +474,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_diametro(self, product_template, product_attribute_diametro, product_attribute_diametro_value):
+    def _search_or_create_product_attribute_line_diametro(self, product_template, product_attribute_diametro,
+                                                 product_attribute_diametro_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -425,13 +485,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_diametro.id),
+            ]
+        )
+        if result and product_attribute_diametro_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_diametro_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_diametro.id,
                 "value_ids": [(6, 0, [product_attribute_diametro_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_anchura(self, product_attribute_anchura, product_attribute_value_anchura):
         product_attribute_anchura_id = product_attribute_anchura[0].id
@@ -450,7 +524,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_anchura(self, product_template, product_attribute_anchura, product_attribute_anchura_value):
+    def _search_or_create_product_attribute_line_anchura(self, product_template, product_attribute_anchura,
+                                                 product_attribute_anchura_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -460,13 +535,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_anchura.id),
+            ]
+        )
+        if result and product_attribute_anchura_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_anchura_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_anchura.id,
                 "value_ids": [(6, 0, [product_attribute_anchura_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_altura(self, product_attribute_altura, product_attribute_value_altura):
         product_attribute_altura_id = product_attribute_altura[0].id
@@ -485,7 +574,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_altura(self, product_template, product_attribute_altura, product_attribute_altura_value):
+    def _search_or_create_product_attribute_line_altura(self, product_template, product_attribute_altura,
+                                                 product_attribute_altura_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -495,13 +585,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_altura.id),
+            ]
+        )
+        if result and product_attribute_altura_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_altura_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_altura.id,
                 "value_ids": [(6, 0, [product_attribute_altura_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_tasa(self, product_attribute_tasa, product_attribute_value_tasa):
         product_attribute_tasa_id = product_attribute_tasa[0].id
@@ -520,7 +624,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_tasa(self, product_template, product_attribute_tasa, product_attribute_tasa_value):
+    def _search_or_create_product_attribute_line_tasa(self, product_template, product_attribute_tasa,
+                                                 product_attribute_tasa_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -530,13 +635,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_tasa.id),
+            ]
+        )
+        if result and product_attribute_tasa_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_tasa_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_tasa.id,
                 "value_ids": [(6, 0, [product_attribute_tasa_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_sonoridad(self, product_attribute_sonoridad, product_attribute_value_sonoridad):
         product_attribute_sonoridad_id = product_attribute_sonoridad[0].id
@@ -555,7 +674,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_sonoridad(self, product_template, product_attribute_sonoridad, product_attribute_sonoridad_value):
+    def _search_or_create_product_attribute_line_sonoridad(self, product_template, product_attribute_sonoridad,
+                                                 product_attribute_sonoridad_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -565,13 +685,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_sonoridad.id),
+            ]
+        )
+        if result and product_attribute_sonoridad_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_sonoridad_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_sonoridad.id,
                 "value_ids": [(6, 0, [product_attribute_sonoridad_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_consumo(self, product_attribute_consumo, product_attribute_value_consumo):
         product_attribute_consumo_id = product_attribute_consumo[0].id
@@ -590,7 +724,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_consumo(self, product_template, product_attribute_consumo, product_attribute_consumo_value):
+    def _search_or_create_product_attribute_line_consumo(self, product_template, product_attribute_consumo,
+                                                 product_attribute_consumo_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -600,13 +735,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_consumo.id),
+            ]
+        )
+        if result and product_attribute_consumo_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_consumo_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_consumo.id,
                 "value_ids": [(6, 0, [product_attribute_consumo_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_frenada(self, product_attribute_frenada, product_attribute_value_frenada):
         product_attribute_frenada_id = product_attribute_frenada[0].id
@@ -625,7 +774,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_frenada(self, product_template, product_attribute_frenada, product_attribute_frenada_value):
+    def _search_or_create_product_attribute_line_frenada(self, product_template, product_attribute_frenada,
+                                                 product_attribute_frenada_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -635,13 +785,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_frenada.id),
+            ]
+        )
+        if result and product_attribute_frenada_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_frenada_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_frenada.id,
                 "value_ids": [(6, 0, [product_attribute_frenada_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_temporada(self, product_attribute_temporada, product_attribute_value_temporada):
         product_attribute_temporada_id = product_attribute_temporada[0].id
@@ -660,7 +824,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_temporada(self, product_template, product_attribute_temporada, product_attribute_temporada_value):
+    def _search_or_create_product_attribute_line_temporada(self, product_template, product_attribute_temporada,
+                                                 product_attribute_temporada_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -670,13 +835,27 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_temporada.id),
+            ]
+        )
+        if result and product_attribute_temporada_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_temporada_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_temporada.id,
                 "value_ids": [(6, 0, [product_attribute_temporada_value.id])],
             }
         )
+        return result
 
     def _search_or_create_product_attribute_value_segmento(self, product_attribute_segmento, product_attribute_value_segmento):
         product_attribute_segmento_id = product_attribute_segmento[0].id
@@ -695,7 +874,8 @@ class TuruedaProductImport(models.TransientModel):
             }
         )
 
-    def _search_or_create_product_attribute_line_segmento(self, product_template, product_attribute_segmento, product_attribute_segmento_value):
+    def _search_or_create_product_attribute_line_segmento(self, product_template, product_attribute_segmento,
+                                                 product_attribute_segmento_value):
         result = self.env["product.template.attribute.line"].search(
             [
                 ("product_tmpl_id", "=", product_template.id),
@@ -705,10 +885,24 @@ class TuruedaProductImport(models.TransientModel):
         )
         if result:
             return result
-        return self.env["product.template.attribute.line"].create(
+
+        result = self.env["product.template.attribute.line"].search(
+            [
+                ("product_tmpl_id", "=", product_template.id),
+                ("attribute_id", "=", product_attribute_segmento.id),
+            ]
+        )
+        if result and product_attribute_segmento_value not in result.value_ids:
+            result.write({
+                "value_ids": [(4, product_attribute_segmento_value.id)]
+            })
+            return result
+
+        result = self.env["product.template.attribute.line"].create(
             {
                 "product_tmpl_id": product_template.id,
                 "attribute_id": product_attribute_segmento.id,
                 "value_ids": [(6, 0, [product_attribute_segmento_value.id])],
             }
         )
+        return result
