@@ -1,0 +1,96 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* turueda_product_import
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-02 09:57+0000\n"
+"PO-Revision-Date: 2023-08-02 09:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: turueda_product_import
+#: model_terms:ir.ui.view,arch_db:turueda_product_import.import_product_wizard_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import__id
+msgid "ID"
+msgstr "ID"
+
+#. module: turueda_product_import
+#: model_terms:ir.ui.view,arch_db:turueda_product_import.import_product_wizard_view
+msgid "Import"
+msgstr "Importar"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import__import_file
+msgid "Import File (*.xlsx)"
+msgstr "Importar archivo (*.xlsx)"
+
+#. module: turueda_product_import
+#: model_terms:ir.ui.view,arch_db:turueda_product_import.import_product_wizard_view
+msgid "Import Product"
+msgstr "Producto de importación"
+
+#. module: turueda_product_import
+#. odoo-python
+#: code:addons/turueda_product_import/wizard/import_product_wizard.py:0
+#, python-format
+msgid "Invalid file style, only .xls or .xlsx file allowed"
+msgstr "Estilo de archivo no válido, solo se permiten archivos .xls o .xlsx"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: turueda_product_import
+#: model:ir.model.fields,field_description:turueda_product_import.field_turueda_product_import__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: turueda_product_import
+#. odoo-python
+#: code:addons/turueda_product_import/wizard/import_product_wizard.py:0
+#, python-format
+msgid "Please select Excel file to import"
+msgstr "Seleccione el archivo de Excel para importar"
+
+#. module: turueda_product_import
+#: model:ir.actions.act_window,name:turueda_product_import.turueda_import_product_action
+#: model:ir.ui.menu,name:turueda_product_import.turueda_import_product_menuitem
+msgid "Turueda Import Product"
+msgstr "Importación de productos Turueda"
+
+#. module: turueda_product_import
+#: model:ir.model,name:turueda_product_import.model_turueda_product_import
+msgid "Turueda Product Import"
+msgstr "Importación de productos Turueda"
